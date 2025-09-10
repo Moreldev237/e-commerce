@@ -41,7 +41,7 @@
 Toute contribution est la bienvenue ! Merci de créer une issue ou une pull request pour discuter des modifications.
 
 .NOM:      *NKONGA TADJUIDJE*
-.PRENOM:  * MOREL*
-.TEL:    * +237 686 865 451*
+.PRENOM:  *MOREL*
+.TEL:     +237 686 865 451
 .EMAIL:    *nkongamorel1@gmail.com*
 
