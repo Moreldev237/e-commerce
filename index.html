@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saveurs du Cameroun - Restaurant Traditionnel</title>
+    <style>
+    
+
+
+
+
+
+        /* RESET ET STYLES DE BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #f7941d;
+            --secondary-color: #009639;
+            --accent-color: #ce1126;
+            --dark-color: #333;
+            --light-color: #f8f8f8;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #e58212;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* HEADER */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        /* ABOUT SECTION */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* MENU SECTION */
+        .menu {
+            background-color: #f9f9f9;
+        }
+        
+        .menu-filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            margin: 5px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .menu-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .menu-item-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .menu-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .menu-item:hover .menu-item-image img {
+            transform: scale(1.1);
+        }
+        
+        .menu-item-content {
+            padding: 20px;
+        }
+        
+        .menu-item-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .menu-item-title h3 {
+            margin-bottom: 0;
+        }
+        
+        .menu-item-price {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        /* GALLERY SECTION */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 8px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* TESTIMONIALS SECTION */
+        .testimonials {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),url('https://images.unsplash.com/photo-14142235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+        
+        .testimonials h2 {
+            color: white;
+        }
+        
+        .testimonials h2::after {
+            background: white;
+        }
+        
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            display: none;
+        }
+        
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 1s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+        }
+        
+        .testimonial-nav {
+            margin-top: 20px;
+        }
+        
+        .testimonial-nav button {
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+            padding: 8px 15px;
+            margin: 0 5px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-nav button:hover {
+            background: white;
+            color: var(--dark-color);
+        }
+        
+        /* CONTACT SECTION */
+        .contact-container {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .contact-info, .contact-form {
+            flex: 1;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .map {
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 30px;
+        }
+        
+        .map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* FOOTER */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* RESPONSIVE STYLES */
+        @media (max-width: 992px) {
+            .about-content, .contact-container {
+                flex-direction: column;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background: white;
+                flex-direction: column;
+                transition: all 0.3s ease;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 30px;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .hero {
+                height: 80vh;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Saveurs <span>Du Cameroun</span></a>
+            <div class="menu-toggle">☰</div>
+            <nav>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#apropos">À Propos</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#galerie">Galerie</a></li>
+                    <li><a href="#temoignages">Témoignages</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="container hero-content">
+            <h1>Découvrez les Saveurs Authentiques du Cameroun</h1>
+            <p>Plongez dans une expérience culinaire unique avec nos plats traditionnels préparés avec passion et des ingrédients frais.</p>
+            <a href="#reservation" class="btn">Réserver une table</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="apropos" class="about">
+        <div class="container">
+            <h2>À Propos de Nous</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Bienvenue à Saveurs du Cameroun, où nous célébrons la richesse et la diversité de la cuisine camerounaise. Notre restaurant a été fondé en 2025 avec pour mission de partager les délices culinaires de notre pays avec le monde.</p>
+                    <p>Notre chef, originaire de l'ouest , apporte plus de 20 ans d'expérience et des recettes transmises de génération en génération. Chaque plat que nous servons raconte une histoire et reflète l'authenticité des saveurs camerounaises.</p>
+                    <p>Nous nous engageons à utiliser des ingrédients frais et locaux chaque fois que possible, soutenant ainsi les agriculteurs et producteurs locaux.</p>
+                    <a href="#menu" class="btn">Découvrir notre menu</a>
+                </div>
+                <div class="about-image">
+                    <img src="logo24.jpg" alt="Intérieur du restaurant">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <h2>Notre Menu</h2>
+            <div class="menu-filters">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="plats-principaux">Plats Principaux</button>
+                <button class="filter-btn" data-filter="entrees">Entrées</button>
+                <button class="filter-btn" data-filter="desserts">Desserts</button>
+                <button class="filter-btn" data-filter="boissons">Boissons</button>
+            </div>
+            <div class="menu-items">
+                <!-- Ndolé -->
+                <div class="menu-item" data-category="plats-principaux">
+                    <div class="menu-item-image">
+                        <img src="logo18.jpg" alt="Ndolé plantain murs">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Ndolé plantain murs</h3>
+                            <span class="menu-item-price">1500 fcfa </span>
+                        </div>
+                        <p>Plat national du Cameroun à base de feuilles de ndolé amères, avec des arachides, du poisson, de la crevette ou de la viande.</p>
+                    </div>
+                </div>
+                 <!--kondre--> 
+                <div class="menu-item" data-category="plats-principaux">
+                    <div class="menu-item-image">
+                        <img src="logo3.jpg" alt="kondre">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>kondre</h3>
+                            <span class="menu-item-price">1500 fcfa </span>
+                        </div>
+                        <p>plat nationale du continent a base du teint (ingredient_secret) et consomme avec la viande de chevre,boeuf etc...</p>
+                    </div>
+                </div>
+                
+                <!-- Poulet DG -->
+                <div class="menu-item" data-category="plats-principaux">
+                    <div class="menu-item-image">
+                        <img src="logo5.jpg" alt="Poulet DG">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Poulet DG</h3>
+                            <span class="menu-item-price">2000 fcfa</span>
+                        </div>
+                        <p>Poulet sauté avec des plantains, des légumes et une sauce savoureuse, souvent servi lors des occasions spéciales.</p>
+                    </div>
+                </div>
+                
+                <!-- Koki -->
+                <div class="menu-item" data-category="entrees">
+                    <div class="menu-item-image">
+                        <img src="logo17.jpg" alt="Koki">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Koki</h3>
+                            <span class="menu-item-price">1000 fcfa</span>
+                        </div>
+                        <p>Gâteau de haricots à l'huile de palme, cuit dans des feuilles de bananier, un plat typique de l'ouest du Cameroun.</p>
+                    </div>
+                </div>
+                
+                <!-- prunes -->
+                <div class="menu-item" data-category="entrees">
+                    <div class="menu-item-image">
+                        <img src="logo7.jpg" alt="les prunes">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>les prunes</h3>
+                            <span class="menu-item-price">300 fcfa</span>
+                        </div>
+                        <p>mangeables avec les bobolo,les tubercules de manioc et bien d'autres ,les prunes sont riches en vitamines et fortifie le corps.</p>
+                    </div>
+                </div>
+                
+                <!-- nkuir -->
+                <div class="menu-item" data-category="plats-principaux">
+                    <div class="menu-item-image">
+                        <img src="logo13.jpg" alt="nkuir">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>couscous nkuir</h3>
+                            <span class="menu-item-price">1000 fcfa</span>
+                        </div>
+                        <p>met Traditionnel des grasfields le couscous nkuir est aussi consomme avec les legumes frais(djapcheu).</p>
+                    </div>
+                </div>
+                
+                <!-- Eru -->
+                <div class="menu-item" data-category="plats-principaux">
+                    <div class="menu-item-image">
+                        <img src="logo21.jpg" alt="Eru">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Eru</h3>
+                            <span class="menu-item-price">1500 fcfa</span>
+                        </div>
+                        <p>Plat à base de feuilles d'okok et de waterleaf, avec de la viande, du poisson ou des crevettes, originaire de la région anglophone.</p>
+                    </div>
+                </div>
+                
+                <!-- Beignet de haricot -->
+                <div class="menu-item" data-category="entrees">
+                    <div class="menu-item-image">
+                        <img src="logo12.jpg" alt="Beignet de haricot">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Beignet de haricot</h3>
+                            <span class="menu-item-price">500 fcfa</span>
+                        </div>
+                        <p>Beignets frits à base de purée de haricots noirs, épices et oignons, parfaits pour commencer le repas.</p>
+                    </div>
+                </div>
+                
+                <!-- Jus de fruit naturel -->
+                <div class="menu-item" data-category="boissons">
+                    <div class="menu-item-image">
+                        <img src="logo22.jpg" alt="Jus de fruit naturel">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Jus de fruit naturel</h3>
+                            <span class="menu-item-price">800 fcfa</span>
+                        </div>
+                        <p>Selection de jus frais pressés : gingembre, ananas, tamarin, bissap, ou mangue.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galerie" class="gallery">
+        <div class="container">
+            <h2>Galerie</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="logo1.jpg" alt="Plat camerounais">
+                </div>
+                <div class="gallery-item">
+                    <img src="logo9.jpg" alt="Cuisine traditionnelle">
+                </div>
+                <div class="gallery-item">
+                    <img src="logo20.jpg" alt="Préparation des plats">
+                </div>
+                <div class="gallery-item">
+                    <img src="logo11.jpg" alt="Intérieur du restaurant">
+                </div>
+                <div class="gallery-item">
+                    <img src="logo4.jpg" alt="Service en salle">
+                </div>
+                <div class="gallery-item">
+                    <img src="logo14.jpg" alt="Équipe de cuisine">
+                </div>
+                <div class="gallery-item">
+                    <img src="logo32.jpg" alt="Équipe de cuisine">
+                </div>
+                <div class="gallery-item">
+                    <img src="logo8.jpg" alt="Équipe de cuisine">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="temoignages" class="testimonials">
+        <div class="container">
+            <h2>Ce Que Disent Nos Clients</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial active">
+                    <p class="testimonial-text">"Le Ndolé était absolument délicieux, aussi bon que celui de ma grand-mère au Cameroun. Une véritable expérience nostalgique!"</p>
+                    <p class="testimonial-author">Marie T., cliente régulière</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"Ambiance chaleureuse, service impeccable et des plats qui transportent directement au cœur du Cameroun. Je recommande vivement!"</p>
+                    <p class="testimonial-author">TALLA YVAN., premier visiteur</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"J'ai essayé plusieurs plats et chacun était une découverte gustative. Les saveurs sont authentiques et les ingrédients frais."</p>
+                    <p class="testimonial-author">SIMO BERTRAND , KEGNNE VERONNIQUE</p>
+                </div>
+                <div class="testimonial-nav">
+                    <button class="prev-btn">←</button>
+                    <button class="next-btn">→</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contactez-Nous</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <div class="contact-icon">📌</div>
+                            <p>7154  NDOGPASSI 3  , DOUALA CAMEROUN</p>
+                        </div>
+                        <div class="contact-detail">
+                            <div class="contact-icon">📞</div>
+                            <p>+237 686 865 451</p>
+                        </div>
+                        <div class="contact-detail">
+                            <div class="contact-icon">✉</div>
+                            <p>MorelFood@saveursducameroun.com</p>
+                        </div>
+                        <div class="contact-detail">
+                            <div class="contact-icon">🕒</div>
+                            <p>Lun-Sam: 11h-15h et 18h-23h<br>Dimanche: 7h-14h</p>
+                        </div>
+                    </div>
+                    <div class="map">
+                        <iframe src="logo27.jpg" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="reservation">
+                        <h2>Réserver une table</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+   <form action="http://localhost:8000/reservation/" method="POST">
+  <input type="text" name="nom" required />
+  <input type="submit" value="Réserver" />
+</form>
+
+
+                        <div class="form-group">
+                            <label for="name">Nom complet</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Date de réservation</label>
+                            <input type="date" id="date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Heure</label>
+                            <input type="time" id="time" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests">Nombre de personnes</label>
+                            <input type="number" id="guests" class="form-control" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message spécial</label>
+                            <textarea id="message" class="form-control"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Réserver</button>
+                    </form>
+                    `success.html`
+html
+<h2>Réservation réussie !</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Saveurs du Cameroun</h3>
+                    <p>Nous vous invitons à découvrir l'authenticité et la richesse de la cuisine camerounaise dans un cadre chaleureux et accueillant.</p>
+                    <div class="social-links">
+                        <a href="#"><span>FB</span></a>
+                        <a href="#"><span>IG</span></a>
+                        <a href="#"><span>TW</span></a>
+                        <a href="#"><span>YT</span></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Liens Rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#apropos">À Propos</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#galerie">Galerie</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Heures d'Ouverture</h3>
+                    <ul class="footer-links">
+                        <li>Lundi-Vendredi: 11h-15h, 18h-23h</li>
+                        <li>Samedi: 11h-23h</li>
+                        <li>Dimanche: 7h-14h</li>
+                        <li>Fermé les jours fériés</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Abonnez-vous à notre newsletter pour recevoir nos actualités et offres spéciales.</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Votre email" required>
+                        </div>
+                        <button type="submit" class="btn">S'abonner</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Saveurs du Cameroun. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu toggle functionality
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+        
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
+        });
+        
+        // Menu filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const menuItems = document.querySelectorAll('.menu-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Get filter value
+                const filterValue = button.getAttribute('data-filter');
+                
+                // Show/hide menu items based on filter
+                menuItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Testimonials slider
+        const testimonials = document.querySelectorAll('.testimonial');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let currentTestimonial = 0;
+        
+        function showTestimonial(index) {
+            testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+            testimonials[index].classList.add('active');
+        }
+        
+        prevBtn.addEventListener('click', () => {
+            currentTestimonial--;
+            if (currentTestimonial < 0) {
+                currentTestimonial = testimonials.length - 1;
+            }
+            showTestimonial(currentTestimonial);
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            currentTestimonial++;
+            if (currentTestimonial >= testimonials.length) {
+                currentTestimonial = 0;
+            }
+            showTestimonial(currentTestimonial);
+        });
+        
+        // Auto-rotate testimonials
+        setInterval(() => {
+            currentTestimonial++;
+            if (currentTestimonial >= testimonials.length) {
+                currentTestimonial = 0;
+            }
+            showTestimonial(currentTestimonial);
+        }, 5000);
+        
+        // Form validation and submission
+        const reservationForm = document.getElementById('reservation');
+        
+        reservationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Basic validation
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const guests = document.getElementById('guests').value;
+            
+            if (name && email && phone && date && time && guests) {
+                alert('Merci pour votre réservation! Nous vous confirmons très rapidement.');
+                reservationForm.reset();
+            } else {
+                alert('Veuillez remplir tous les champs obligatoires.');
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
